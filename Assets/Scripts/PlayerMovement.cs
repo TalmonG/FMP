@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
 
     public float speed;
+    public float sprintSpeed;
+    public float moveSpeed;
     public float gravity = -9.81f;
 
     public Transform groundCheck;
@@ -43,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
+        controller.Move(move * moveSpeed * Time.deltaTime);
 
         /*if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -68,12 +70,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (isSprinting == true)
         {
-            speed = speed;
+            moveSpeed = sprintSpeed;
         }
 
         if (isSprinting == false)
         {
-            speed = speed;
+            moveSpeed = speed;
         }
         velocity.y += gravity * Time.deltaTime;
 
