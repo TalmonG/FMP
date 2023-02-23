@@ -11,6 +11,8 @@ public class CardSwipers : MonoBehaviour
     public GameObject redCardSwiper_StatusGranted;
 
     [Header("Card Swipers Unlocked")]
+    public bool redCardSwiperUnlockStatus = false;
+
     public bool redCardSwiperUsable;
 
     public GameObject redCardSwiperE;
@@ -46,6 +48,7 @@ public class CardSwipers : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("Click");
             redCardSwiper_StatusDenied.SetActive(false);
             redCardSwiper_StatusGranted.SetActive(true);
+            redCardSwiperUnlockStatus = true;
             KeyCards.redKeyCard = false;
             Destroy(redCardSwiper_StatusDenied);
         }
