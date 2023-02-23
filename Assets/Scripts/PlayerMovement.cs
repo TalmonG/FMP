@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float gravity = -9.81f;
 
+    private Camera playerCamera;
+
+
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -20,6 +23,24 @@ public class PlayerMovement : MonoBehaviour
     public bool isSprinting = false;
     Vector3 velocity;
     bool isGrounded;
+    // Headbobing
+    [SerializeField] private bool canUseHeadbob = true;
+
+    [SerializeField] private float walkBobSpeed = 5f;
+    [SerializeField] private float walkBobAmount = 0.05f;
+    [SerializeField] private float sprintBobSpeed = 10f;
+    [SerializeField] private float sprintBobAmount = 10f;
+    private float defaultYPos = 0;
+    private float timer;
+
+
+    void Awake()
+    {
+        playerCamera = GetComponentInChildren<Camera>();
+        defaultYPos = playerCamera.transform.localPosition.y;
+    }
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +52,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-
+        /*if (canUseHeadbob)
+        {
+            HandleHeadbob();
+        }*/
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -54,10 +78,20 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }*/
 
-        if (Input.GetKey(KeyCode.W))
+        if (canUseHeadbob = true && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
+            canUseHeadbob = true;
 
+            if (canUseHeadbob)
+            {
+                HandleHeadbob();
+            }
         }
+        else
+        {
+            canUseHeadbob = false;
+        }
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             isSprinting = true;
@@ -81,5 +115,14 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+    }
+
+    private void HandleHeadbob()
+    {
+        timer += Time.deltaTime * (isSprinting ? sprintBobSpeed : walkBobSpeed);
+        playerCamera.transform.localPosition = new Vector3(
+            playerCamera.transform.localPosition.x,
+            defaultYPos + Mathf.Sin(timer) * (isSprinting ? sprintBobAmount : walkBobAmount),
+            playerCamera.transform.localPosition.z);
     }
 }
