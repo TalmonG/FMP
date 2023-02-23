@@ -4,30 +4,28 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Control Parameters")]
     //[SerializeField] Interact Interact;
     public CharacterController controller;
-
-    public GameObject footSteps;
-
     public float speed;
     public float sprintSpeed;
     public float moveSpeed;
     public float gravity = -9.81f;
+    public bool isSprinting = false;
 
+    [Header("Camera")]
     private Camera playerCamera;
 
-
+    [Header("Ground Checker")]
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public float jumpHeight = 3f;
-
-    public bool isSprinting = false;
-    Vector3 velocity;
     bool isGrounded;
-    // Headbobing
-    [SerializeField] private bool canUseHeadbob = true;
 
+    Vector3 velocity;
+    [Header("Headbobing")]
+    [SerializeField] private bool canUseHeadbob = true;
     [SerializeField] private float walkBobSpeed = 5f;
     [SerializeField] private float walkBobAmount = 0.05f;
     [SerializeField] private float sprintBobSpeed = 10f;
@@ -35,10 +33,14 @@ public class PlayerMovement : MonoBehaviour
     private float defaultYPos = 0;
     private float timer;
 
+    [Header("Footstep Sound")]
+    public GameObject footSteps;
+
     //public Interact RedKeyCardCollectable;
     //public Interact RedKeyCard;
     //public Interact Interact;
     //public Interact RedKeyCardCollected;
+
 
 
     void Awake()
