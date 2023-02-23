@@ -4,19 +4,38 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
-    public GameObject UiObject;
+    // Red Key Card
+    public GameObject RedInteractEImage;
+    public GameObject RedE;
+    public bool RedKeyCardCollectable;
+    public GameObject RedKeyCard;
+    public GameObject RedKeyCardCollected;
 
     // Start is called before the first frame update
     void Start()
     {
-        UiObject.SetActive(false);
+        RedInteractEImage.SetActive(false);
+        RedKeyCardCollected.SetActive(false);
+        RedE.SetActive(false);
+        RedKeyCardCollectable = false;
+    }
+
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.E) && RedKeyCardCollectable == true)
+        {
+            RedKeyCardCollected.SetActive(true);
+            Destroy(RedKeyCard);
+        }
     }
 
     void OnTriggerEnter(Collider player)
     {
         if (player.gameObject.tag == "Player")
         {
-            UiObject.SetActive(true);
+            RedInteractEImage.SetActive(true);
+            RedE.SetActive(true);
+            RedKeyCardCollectable = true;
         }
     }
 
@@ -24,7 +43,10 @@ public class Interact : MonoBehaviour
     {
         if (player.gameObject.tag == "Player")
         {
-            UiObject.SetActive(false);
+            RedInteractEImage.SetActive(false);
+            RedE.SetActive(false);
+            RedKeyCardCollectable = false;
         }
     }
+
 }
