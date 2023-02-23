@@ -24,8 +24,10 @@ public class Interact : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.E) && RedKeyCardCollectable == true)
         {
+            FindObjectOfType<AudioManager>().Play("Click");
             RedKeyCardCollected.SetActive(true);
             Destroy(RedKeyCard);
+            Debug.Log("Still here");
         }
     }
 

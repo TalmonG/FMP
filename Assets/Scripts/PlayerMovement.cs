@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    //[SerializeField] Interact Interact;
     public CharacterController controller;
+
+    public GameObject footSteps;
 
     public float speed;
     public float sprintSpeed;
@@ -33,6 +35,11 @@ public class PlayerMovement : MonoBehaviour
     private float defaultYPos = 0;
     private float timer;
 
+    //public Interact RedKeyCardCollectable;
+    //public Interact RedKeyCard;
+    //public Interact Interact;
+    //public Interact RedKeyCardCollected;
+
 
     void Awake()
     {
@@ -51,6 +58,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        /*if (Input.GetKey(KeyCode.E) && RedKeyCardCollectable == true)
+        {
+            FindObjectOfType<AudioManager>().Play("Click");
+            Interact.RedKeyCardCollected.SetActive(true);
+            Destroy(RedKeyCard);
+            Debug.Log("Doneeee");
+
+        }*/
 
         /*if (canUseHeadbob)
         {
@@ -81,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         if (canUseHeadbob = true && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             canUseHeadbob = true;
-
+            footSteps.SetActive(true);
             if (canUseHeadbob)
             {
                 HandleHeadbob();
@@ -89,8 +105,13 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            canUseHeadbob = false;
+            footSteps.SetActive(false);
+            canUseHeadbob = true;
         }
+        /*if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
+        {
+            footSteps.SetActive(false);
+        }*/
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
