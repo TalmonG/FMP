@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
+    // Referencing
+    public KeyCards KeyCards;
+
     // Red Key Card
     public GameObject RedInteractEImage;
     public GameObject RedE;
@@ -24,7 +27,9 @@ public class Interact : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.E) && RedKeyCardCollectable == true)
         {
+            FindObjectOfType<AudioManager>().Play("Click");
             RedKeyCardCollected.SetActive(true);
+            KeyCards.redKeyCard = true;
             Destroy(RedKeyCard);
         }
     }
