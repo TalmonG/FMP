@@ -2462,7 +2462,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-75634
+  m_Name: pb_Mesh16828
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3281,6 +3281,7 @@ MonoBehaviour:
   CardSwipers: {fileID: 2124912784}
   animator: {fileID: 585571960}
   DoorOpens: {fileID: 1625228422}
+  DoorOpenStatus: 0
 --- !u!1 &605226952
 GameObject:
   m_ObjectHideFlags: 0
