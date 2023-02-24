@@ -25,7 +25,7 @@ public class DoorsUnlock : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("DoorOpening");
             //DoorOpens.SetActive(true);
             animator.SetBool("RedDoorOpen", true);
-
+            FindObjectOfType<AudioManager>().Play("Suspense");
             DoorOpenStatus = true;
 
         }
