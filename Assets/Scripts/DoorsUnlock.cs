@@ -7,6 +7,7 @@ public class DoorsUnlock : MonoBehaviour
     public GameObject RedDoor;
     public CardSwipers CardSwipers;
     [SerializeField] private Animator animator;
+    public GameObject DoorOpens;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,11 @@ public class DoorsUnlock : MonoBehaviour
         if (CardSwipers.redCardSwiperUnlockStatus == true)
         {
             //RedDoor.GetComponent<Animation>().Play("RedDoorOpen");
+            //FindObjectOfType<AudioManager>().Play("DoorOpening");
+            //DoorOpens.SetActive(true);
             animator.SetBool("RedDoorOpen", true);
+            
+
         }
     }
 }
