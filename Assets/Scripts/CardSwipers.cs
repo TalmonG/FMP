@@ -22,6 +22,7 @@ public class CardSwipers : MonoBehaviour
         redCardSwiperUsable = false;
         redCardSwiper_StatusDenied.SetActive(true);
         redCardSwiper_StatusGranted.SetActive(false);
+        redCardSwiperE.SetActive(false);
 
     }
 
@@ -51,12 +52,14 @@ public class CardSwipers : MonoBehaviour
             redCardSwiperUnlockStatus = true;
             KeyCards.redKeyCard = false;
             Destroy(redCardSwiper_StatusDenied);
+            Destroy(redCardSwiperE);
+
         }
     }
 
     void OnTriggerEnter(Collider player)
     {
-        if (player.gameObject.tag == "Player")
+        if (player.gameObject.tag == "Player" && redCardSwiperUnlockStatus == false)
         {
             /*if (Input.GetKey(KeyCode.E) && KeyCards.redKeyCard == true)
             {
@@ -74,7 +77,7 @@ public class CardSwipers : MonoBehaviour
 
     void OnTriggerExit(Collider player)
     {
-        if (player.gameObject.tag == "Player")
+        if (player.gameObject.tag == "Player" && redCardSwiperUnlockStatus == false)
         {
             redCardSwiperE.SetActive(false);
             redCardSwiperUsable = false;
