@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardSwipers : MonoBehaviour
 {
     public KeyCards KeyCards;
-    public DialogueTrigger DialogueTrigger;
+    //public DialogueTrigger DialogueTrigger;
 
     [Header("Card Swipers")]
     public GameObject redCardSwiper_StatusDenied;
@@ -76,7 +76,7 @@ public class CardSwipers : MonoBehaviour
 
             if (player.gameObject.tag == "Player" && KeyCards.redKeyCard == false)
             {
-                DialogueTrigger.TriggerDialogue();
+                //DialogueTrigger.TriggerDialogue();
                 Debug.Log("Find a red Keycard First!");
             }
         }

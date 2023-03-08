@@ -1,21 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public class KeyCards : MonoBehaviour
-{    
-
-    public bool redKeyCard;
-
-    private void Awake()
-    {
-
-        
-
-        redKeyCard = false;
-    }
-
+public class KeyCardsManager : MonoBehaviour
+{
+    // Start is called before the first frame update
     void Start()
     {
         
