@@ -42,28 +42,34 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        isPaused = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void Resume()
     {
+        isPaused = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        progresslost.SetActive(false);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
     }
 
     public void Quit()
     {
-        Time.timeScale = 0f;
         pauseMenu.SetActive(false);
         progresslost.SetActive(true);
     }
 
     public void NoQuit()
     {
-        Time.timeScale = 0f;
-        pauseMenu.SetActive(true);
-        progresslost.SetActive(false);
+        //Time.timeScale = 1f;
+        Resume();
+        //progresslost.SetActive(false);
     }
 
     public void YesQuit()
