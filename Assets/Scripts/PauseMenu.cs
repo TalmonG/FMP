@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject progresslost;
+    [SerializeField] GameObject settingsMenu;
     public bool isPaused;
 
 
@@ -37,6 +38,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         progresslost.SetActive(false);
+        settingsMenu.SetActive(false);
         isPaused = false;
     }
 
@@ -46,6 +48,8 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         pauseMenu.SetActive(true);
+        settingsMenu.SetActive(false);
+        progresslost.SetActive(false);
         Time.timeScale = 0f;
     }
 
@@ -55,6 +59,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         progresslost.SetActive(false);
+        settingsMenu.SetActive(false);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
     }
@@ -63,13 +68,20 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         progresslost.SetActive(true);
+        settingsMenu.SetActive(false);
     }
 
-    public void NoQuit()
+    public void BackToPause()
     {
-        //Time.timeScale = 1f;
-        Resume();
-        //progresslost.SetActive(false);
+        Pause();
+        
+    }
+
+    public void SettingsMenu()
+    {
+        pauseMenu.SetActive(false);
+        progresslost.SetActive(false);
+        settingsMenu.SetActive(true);
     }
 
     public void YesQuit()
