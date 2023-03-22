@@ -5,7 +5,11 @@ using UnityEngine;
 public class CardSwipers : MonoBehaviour
 {
     public KeyCards KeyCards;
-    //public DialogueTrigger DialogueTrigger;
+    public Dialogue dialogue;
+
+    public GameObject redKeyCardTextGameObject;
+
+
 
     [Header("Card Swipers")]
     public GameObject redCardSwiper_StatusDenied;
@@ -18,12 +22,16 @@ public class CardSwipers : MonoBehaviour
 
     public GameObject redCardSwiperE;
 
+    public GameObject redKeyCardText;
+
     private void Awake()
     {
         redCardSwiperUsable = false;
         redCardSwiper_StatusDenied.SetActive(true);
         redCardSwiper_StatusGranted.SetActive(false);
         redCardSwiperE.SetActive(false);
+        redKeyCardText.SetActive(false);
+
 
     }
 
@@ -31,15 +39,7 @@ public class CardSwipers : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && KeyCards.redKeyCard == true)
         {
-            /*if (Input.GetKey(KeyCode.E) && KeyCards.redKeyCard == true)
-            {
-                Debug.Log("Red KeyCard Accepted!");
-                FindObjectOfType<AudioManager>().Play("Click");
-                redCardSwiper_StatusDenied.SetActive(false);
-                redCardSwiper_StatusGranted.SetActive(true);
-                KeyCards.redKeyCard = false;
-                Destroy(redCardSwiper_StatusDenied);
-            }*/
+        
         }
     }
 
@@ -56,27 +56,29 @@ public class CardSwipers : MonoBehaviour
             Destroy(redCardSwiperE);
 
         }
+
+        if (Input.GetKeyDown(KeyCode.E) && KeyCards.redKeyCard == false)
+        {
+        redKeyCardText.SetActive(true);
+        dialogue.SpawnRedKeyCardTextGameObject();
+        }
+    }
+
+    public void SpawnRedKeyCardTextGameObject()
+    {
+        Instantiate(redKeyCardTextGameObject, transform.position, transform.rotation);
+        dialogue.DestroyObjectDelayed();
     }
 
     void OnTriggerEnter(Collider player)
     {
         if (player.gameObject.tag == "Player" && redCardSwiperUnlockStatus == false)
         {
-            /*if (Input.GetKey(KeyCode.E) && KeyCards.redKeyCard == true)
-            {
-                Debug.Log("Red KeyCard Accepted!");
-                FindObjectOfType<AudioManager>().Play("Click");
-                redCardSwiper_StatusDenied.SetActive(false);
-                redCardSwiper_StatusGranted.SetActive(true);
-                KeyCards.redKeyCard = false;
-                Destroy(redCardSwiper_StatusDenied);
-            }*/
             redCardSwiperE.SetActive(true);
             redCardSwiperUsable = true;
 
             if (player.gameObject.tag == "Player" && KeyCards.redKeyCard == false)
             {
-                //DialogueTrigger.TriggerDialogue();
                 Debug.Log("Find a red Keycard First!");
             }
         }

@@ -9,13 +9,12 @@ public class Dialogue : MonoBehaviour
 
     public TextMeshProUGUI textComponent;
     public float textSpeed;
+    public int timerBeforeDestroy;
 
     private int index;
     [TextArea(7, 10)]
     public string[] sentences;
 
-    public Sound[] sounds;
-    
 
 
     // Start is called before the first frame update
@@ -48,28 +47,12 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(TypeLine());
     }
 
-    void Awake()
-    {
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-        }
-    }
     IEnumerator TypeLine()
     {
         foreach (char c in sentences[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
-            /*c = gameObject.AddComponent<AudioSource>();
-            c.source.clip = s.clip;
-
-            c.source.volume = s.volume;
-            c.source.pitch = s.pitch;*/
         }
     }
 
@@ -87,4 +70,16 @@ public class Dialogue : MonoBehaviour
         }
     }
 
+    public void DestroyObjectDelayed()
+    {
+        // Kills the game object in 5 seconds after loading the object
+        Destroy(gameObject, timerBeforeDestroy);
+        Debug.Log("Destroying object in: " + timerBeforeDestroy);
+    }
+
+    public void SpawnRedKeyCardTextGameObject()
+    {
+        Instantiate(this, transform.position, transform.rotation);
+        DestroyObjectDelayed();
+    }
 }

@@ -21,9 +21,7 @@ public class DoorsUnlock : MonoBehaviour
     {
         if (CardSwipers.redCardSwiperUnlockStatus == true && DoorOpenStatus == false)
         {
-            //RedDoor.GetComponent<Animation>().Play("RedDoorOpen");
             FindObjectOfType<AudioManager>().Play("DoorOpening");
-            //DoorOpens.SetActive(true);
             animator.SetBool("RedDoorOpen", true);
             FindObjectOfType<AudioManager>().Play("Suspense");
             DoorOpenStatus = true;
