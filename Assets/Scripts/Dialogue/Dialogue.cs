@@ -5,7 +5,7 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-
+    public CardSwipers cardSwipers;
 
     public TextMeshProUGUI textComponent;
     public float textSpeed;
@@ -79,7 +79,7 @@ public class Dialogue : MonoBehaviour
 
     public void SpawnRedKeyCardTextGameObject()
     {
-        Instantiate(this, transform.position, transform.rotation);
+        GameObject newBullet = Instantiate(cardSwipers.redKeyCardTextGameObject, transform.position, transform.rotation);
         DestroyObjectDelayed();
     }
 }
