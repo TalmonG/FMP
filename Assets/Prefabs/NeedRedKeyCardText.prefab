@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7044e294076335a4b9b46ff2dd3ab2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardSwipers: {fileID: 0}
   textComponent: {fileID: 486447796881341092}
   textSpeed: 0.05
   timerBeforeDestroy: 5
