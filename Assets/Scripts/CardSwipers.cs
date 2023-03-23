@@ -6,7 +6,6 @@ public class CardSwipers : MonoBehaviour
 {
     public KeyCards KeyCards;
     public Dialogue dialogue;
-
     public GameObject redKeyCardTextGameObject;
 
 
@@ -51,9 +50,11 @@ public class CardSwipers : MonoBehaviour
             redCardSwiper_StatusDenied.SetActive(false);
             redCardSwiper_StatusGranted.SetActive(true);
             redCardSwiperUnlockStatus = true;
-            KeyCards.redKeyCard = false;
+            //KeyCards.redKeyCard = false;
             Destroy(redCardSwiper_StatusDenied);
             Destroy(redCardSwiperE);
+            Debug.Log("BROKEY");
+
 
         }
 
@@ -66,7 +67,6 @@ public class CardSwipers : MonoBehaviour
 
     public void SpawnRedKeyCardTextGameObject()
     {
-        Instantiate(redKeyCardTextGameObject, transform.position, transform.rotation);
         dialogue.DestroyObjectDelayed();
     }
 
