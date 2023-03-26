@@ -58,7 +58,7 @@ public class CardSwipers : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && KeyCards.redKeyCard == false)
         {
-        redKeyCardText.SetActive(true);
+            redKeyCardText.SetActive(true);
             redKeyCardText.SetActive(true);
             FindObjectOfType<AudioManager>().Play("Red Key Card");
             Debug.Log("I think i need a red KeyCard. Should be around here somewhere.");
