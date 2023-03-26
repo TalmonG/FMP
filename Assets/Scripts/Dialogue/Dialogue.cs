@@ -31,7 +31,7 @@ public class Dialogue : MonoBehaviour
         {
             if (textComponent.text == sentences[index])
             {
-                //NextLine();
+                NextLine();
             }
             else
             {

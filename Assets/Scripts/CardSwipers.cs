@@ -60,8 +60,10 @@ public class CardSwipers : MonoBehaviour
         {
         redKeyCardText.SetActive(true);
             redKeyCardText.SetActive(true);
-            Debug.Log("Need Keycard dude");
+            FindObjectOfType<AudioManager>().Play("Red Key Card");
+            Debug.Log("I think i need a red KeyCard. Should be around here somewhere.");
             StartCoroutine(RedKeyCardTextTimer());
+
 
 
         }
