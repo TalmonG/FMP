@@ -6,7 +6,7 @@ public class CardSwipers : MonoBehaviour
 {
     public KeyCards KeyCards;
     public Dialogue dialogue;
-    public GameObject redKeyCardTextGameObject;
+    //public GameObject redKeyCardTextGameObject;
 
 
 
@@ -32,6 +32,7 @@ public class CardSwipers : MonoBehaviour
         redKeyCardText.SetActive(false);
 
 
+
     }
 
     void Update()
@@ -44,16 +45,13 @@ public class CardSwipers : MonoBehaviour
 
     void OnTriggerStay(Collider player)
     {
-        if (Input.GetKey(KeyCode.E) && KeyCards.redKeyCard == true)
+        if (Input.GetKeyDown(KeyCode.E) && KeyCards.redKeyCard == true)
         {
             FindObjectOfType<AudioManager>().Play("Click");
             redCardSwiper_StatusDenied.SetActive(false);
             redCardSwiper_StatusGranted.SetActive(true);
             redCardSwiperUnlockStatus = true;
-            //KeyCards.redKeyCard = false;
-            Destroy(redCardSwiper_StatusDenied);
-            Destroy(redCardSwiperE);
-            Debug.Log("BROKEY");
+            Debug.Log("access granted");
 
 
         }
@@ -61,13 +59,24 @@ public class CardSwipers : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && KeyCards.redKeyCard == false)
         {
         redKeyCardText.SetActive(true);
-        dialogue.SpawnRedKeyCardTextGameObject();
+            redKeyCardText.SetActive(true);
+            Debug.Log("Need Keycard dude");
+            StartCoroutine(RedKeyCardTextTimer());
+
+
         }
+    }
+
+    IEnumerator RedKeyCardTextTimer()
+    {
+        redKeyCardText.SetActive(true);
+        yield return new WaitForSecondsRealtime(5);
+        redKeyCardText.SetActive(false);
     }
 
     public void SpawnRedKeyCardTextGameObject()
     {
-        dialogue.DestroyObjectDelayed();
+        //dialogue.DestroyObjectDelayed();
     }
 
     void OnTriggerEnter(Collider player)

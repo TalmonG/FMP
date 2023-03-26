@@ -14,6 +14,9 @@ public class Interact : MonoBehaviour
     public GameObject RedKeyCard;
     public GameObject RedKeyCardCollected;
 
+    //KeyCards
+    public GameObject RedKeyCardGameObject;
+
 
 
     // Start is called before the first frame update
@@ -27,13 +30,7 @@ public class Interact : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.E) && RedKeyCardCollectable == true)
-        {
-            FindObjectOfType<AudioManager>().Play("Click");
-            RedKeyCardCollected.SetActive(true);
-            KeyCards.redKeyCard = true;
-            Destroy(RedKeyCard);
-        }
+        
     }
 
     void OnTriggerEnter(Collider player)
@@ -46,14 +43,26 @@ public class Interact : MonoBehaviour
         }
     }
 
+    void OnTriggerStay(Collider player)
+    {
+        if (Input.GetKeyDown(KeyCode.E) && RedKeyCardCollectable == true)
+        {
+            FindObjectOfType<AudioManager>().Play("Click");
+            RedKeyCardCollected.SetActive(true);
+            KeyCards.redKeyCard = true;
+            RedKeyCardGameObject.SetActive(false);
+
+        }
+
+    }
+
     void OnTriggerExit(Collider player)
     {
-        if (player.gameObject.tag == "Player")
-        {
-            RedInteractEImage.SetActive(false);
-            RedE.SetActive(false);
-            RedKeyCardCollectable = false;
-        }
+        
+        RedInteractEImage.SetActive(false);
+        RedE.SetActive(false);
+        RedKeyCardCollectable = false;
+        
     }
 
 }

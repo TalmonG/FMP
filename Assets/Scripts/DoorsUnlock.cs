@@ -10,10 +10,13 @@ public class DoorsUnlock : MonoBehaviour
     public GameObject DoorOpens;
     public bool DoorOpenStatus = false;
 
+    public GameObject RedDoorUnlockText;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        RedDoorUnlockText.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -26,6 +29,17 @@ public class DoorsUnlock : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("Suspense");
             DoorOpenStatus = true;
 
+            StartCoroutine(RedDoorUnlockTextTimer());
+
+
         }
     }
+
+    IEnumerator RedDoorUnlockTextTimer()
+    {
+        RedDoorUnlockText.SetActive(true);
+        yield return new WaitForSecondsRealtime(5);
+        RedDoorUnlockText.SetActive(false);
+    }
+
 }

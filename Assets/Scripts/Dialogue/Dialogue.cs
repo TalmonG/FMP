@@ -79,7 +79,7 @@ public class Dialogue : MonoBehaviour
 
     public void SpawnRedKeyCardTextGameObject()
     {
-        GameObject newBullet = Instantiate(cardSwipers.redKeyCardTextGameObject, transform.position, transform.rotation);
+        //GameObject newBullet = Instantiate(cardSwipers.redKeyCardTextGameObject, transform.position, transform.rotation);
         DestroyObjectDelayed();
     }
 }
