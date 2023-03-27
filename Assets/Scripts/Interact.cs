@@ -7,6 +7,9 @@ public class Interact : MonoBehaviour
     // Referencing
     public KeyCards KeyCards;
 
+    public Accessibility IsNarratorEnabled;
+    public Accessibility IsSubtitlesEnabled;
+
     // Red Key Card
     public GameObject RedInteractEImage;
     public GameObject RedE;

@@ -28,7 +28,7 @@ public class DoorsUnlock : MonoBehaviour
             animator.SetBool("RedDoorOpen", true);
             FindObjectOfType<AudioManager>().Play("Suspense");
             DoorOpenStatus = true;
-
+            FindObjectOfType<AudioManager>().Play("Nice");
             StartCoroutine(RedDoorUnlockTextTimer());
 
 
