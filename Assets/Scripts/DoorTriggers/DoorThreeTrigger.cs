@@ -24,7 +24,7 @@ public class DoorThreeTrigger : MonoBehaviour
         if (player.gameObject.tag == "Player")
         {
             //GetComponent<Animator>().Play("DoorOneClose");
-            animator.SetBool("DoorSixClose", true);
+            animator.SetBool("DoorThreeClose", true);
             Debug.Log("Animation was played");
         }
     }
