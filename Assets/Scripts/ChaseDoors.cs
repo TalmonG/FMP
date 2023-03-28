@@ -24,6 +24,7 @@ public class ChaseDoors : MonoBehaviour
         if (player.gameObject.tag == "Player")
         {
             animator.SetBool("DoorOneClose", true);
+            Debug.Log("Animation was played");
         }
     }
 }
