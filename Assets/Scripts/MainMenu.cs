@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public AudioSource sfxPlayer;
-    [SerializeField] GameObject difficultyPanel;
+    //[SerializeField] GameObject difficultyPanel;
 
 	void Start()
 	{
 		sfxPlayer = GetComponent<AudioSource>();
-        difficultyPanel.SetActive(false);
+        //difficultyPanel.SetActive(false);
 	}
 
     public void PlayGame ()
