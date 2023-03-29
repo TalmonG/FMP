@@ -22,7 +22,7 @@ public class Goal : MonoBehaviour
     {
         if (player.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(3);
         }
     }
 }

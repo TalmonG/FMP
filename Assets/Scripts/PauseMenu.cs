@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject progresslost;
     [SerializeField] GameObject settingsMenu;
+
     public bool isPaused;
 
 
@@ -89,5 +90,15 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         Debug.Log("QUIT!");
         Application.Quit();
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }

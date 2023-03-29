@@ -1826,7 +1826,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c937cb0ed66445741bc2442eab7d4fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutSceneScritp: {fileID: 0}
   pauseMenu: {fileID: 377028938}
   VideoScreen: {fileID: 791899590}
   myVideoPlayer: {fileID: 1834370526}
