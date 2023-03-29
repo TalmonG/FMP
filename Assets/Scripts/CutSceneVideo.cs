@@ -24,6 +24,8 @@ public class CutSceneVideo : MonoBehaviour
         Debug.Log("Video is doneeee");
         VideoScreen.SetActive(false);
         pauseMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+
 
     }
 
